@@ -1,0 +1,50 @@
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+require_once 'Utils.php';
+Utils::IncludeService('{{name}}', '{{module}}');
+
+class {{name}}Test extends TestCase {
+    private $service;
+    private $testData;
+
+    protected function setUp(): void {
+        $this->service = new {{name}}Service();
+        $this->testData = [
+            "id" => 1,
+            "nome" => "Teste de {{name}}",
+            "descricao" => "Descrição de teste",
+        ];
+    }
+
+    public function testCreateModule() {
+        $response = $this->service->insertModule($this->testData);
+
+        $this->assertEquals(200, $response['status']);
+        $this->assertNotEmpty($response['data']);
+        $this->assertEquals("Dados inseridos com sucesso.", $response['message']);
+    }
+
+    public function testGetModule() {
+        $response = $this->service->getModulo();
+
+        $this->assertEquals(200, $response['status']);
+        $this->assertIsArray($response['data']);
+    }
+
+    public function testEditModule() {
+        $this->testData["descricao"] = "Descrição alterada";
+        $response = $this->service->editModule($this->testData);
+
+        $this->assertEquals(200, $response['status']);
+        $this->assertEquals("Dados inseridos com sucesso.", $response['message']);
+    }
+
+    public function testDeleteModule() {
+        $response = $this->service->deletModule(["id" => $this->testData["id"]]);
+
+        $this->assertEquals(200, $response['status']);
+        $this->assertEquals("Dados inseridos com sucesso.", $response['message']);
+    }
+}

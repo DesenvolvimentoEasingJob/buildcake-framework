@@ -1,0 +1,25 @@
+{
+    "name": "buildcake/framework",
+    "description": "Framework BuildCake - Scaffold de módulos, tabelas, APIs e serviços para geração de código (composer create-project).",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["buildcake", "scaffold", "code-generation", "php", "framework"],
+    "authors": [
+        {
+            "name": "BuildCake",
+            "email": "felipe@buildcake.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "buildcake/tools": "^2.0",
+        "buildcake/sqlkit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BuildCake\\Framework\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

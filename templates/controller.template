@@ -1,0 +1,49 @@
+<?php
+
+use BuildCake\Utils\Utils;
+
+Utils::IncludeService('Jwt','Authentication');
+
+$userData = JWTService::validateAuth();  // Valida o token JWT
+
+Utils::IncludeService('{{name}}', '{{module}}');
+
+${{name}} = new {{name}}Service();
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $response = ${{name}}->get{{name}}($_GET);
+    Utils::sendResponse(
+       200, 
+       $response, 
+       "Dados processados com sucesso.");
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $response = ${{name}}->insert{{name}}($_POST);
+    Utils::sendResponse(
+        200, 
+        $response, 
+        "Dados processados com sucesso.");
+    Utils::sendResponse( 200,$data,"Dados inseridos com sucesso.");
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    $response = ${{name}}->edit{{name}}($_POST);
+    Utils::sendResponse(
+        200, 
+        $response, 
+        "Dados processados com sucesso.");
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    $response = ${{name}}->delet{{name}}($_POST);
+    Utils::sendResponse(
+        200, 
+        $response, 
+        "Dados processados com sucesso.");
+}
+
+Utils::sendResponse(405, [], 'Método não permitido.');

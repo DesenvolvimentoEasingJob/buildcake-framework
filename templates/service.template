@@ -1,0 +1,37 @@
+<?php
+
+use BuildCake\SqlKit\Sql;
+use BuildCake\Utils\Utils;
+
+class {{name}}Service {
+    public function __construct() {}
+
+    function get{{name}}($filters){
+        $retorno = Sql::runQuery("SELECT * FROM {{table_name}}  WHERE is_active = true {filter}",$filters);
+
+        if(!$retorno){
+            Utils::sendResponse(200, [], "Nenhum(a) {{name}} encontrado");
+        }
+        
+        return $retorno;
+    }
+
+    function insert{{name}}($data){
+        //Sql::runPost( table name , parametros para insert na tabela);
+        $retorno = Sql::runPost("{{table_name}}",$data);
+        $data['id'] = $retorno;
+        return $data;
+    }
+
+    function edit{{name}}($data){
+        //Sql::runPost( table name , parametros para insert na tabela); diferença que em $data deve conter um parametro id pu conjunto de ids para edição
+        $retorno = Sql::runPut("{{table_name}}",$data);
+        return $retorno;
+    }
+
+     function delet{{name}}($data){
+        //Sql::runPost( table name , apenas o id ou conjunto de ids separados por virgula para remoção);  
+        $retorno = Sql::runDelet("{{table_name}}",$data);
+        return $retorno;
+    }
+}
