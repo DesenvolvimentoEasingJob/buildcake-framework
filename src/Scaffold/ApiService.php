@@ -16,7 +16,7 @@ class ApiService
     public function getApi(array $filters = []): array
     {
         $controllers = [];
-        $srcPath = $this->config->getSrcPath() . DIRECTORY_SEPARATOR;
+        $srcPath = $this->config->getSrcPath();
 
         $modules = @scandir($srcPath) ?: [];
         foreach ($modules as $module) {

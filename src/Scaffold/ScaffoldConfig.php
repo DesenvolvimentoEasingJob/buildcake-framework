@@ -42,7 +42,7 @@ class ScaffoldConfig
 
     public function getSrcPath(): string
     {
-        return $this->projectRoot . DIRECTORY_SEPARATOR . 'src';
+        return $this->projectRoot . DIRECTORY_SEPARATOR;
     }
 
     public function getTemplatesPath(): string
