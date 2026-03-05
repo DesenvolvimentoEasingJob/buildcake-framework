@@ -20,8 +20,8 @@ class ScaffoldConfig
     public function __construct(?string $projectRoot = null)
     {
         $this->projectRoot = rtrim($projectRoot ?? getcwd(), '/\\');
-        $this->templatesPath = $this->projectRoot . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Scaffold' . DIRECTORY_SEPARATOR . 'templates';
-        $this->documentsPath = $this->projectRoot . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Scaffold' . DIRECTORY_SEPARATOR . 'documents';
+        $this->templatesPath = $this->projectRoot . DIRECTORY_SEPARATOR .  DIRECTORY_SEPARATOR . 'Scaffold' . DIRECTORY_SEPARATOR . 'templates';
+        $this->documentsPath = $this->projectRoot . DIRECTORY_SEPARATOR .  DIRECTORY_SEPARATOR . 'Scaffold' . DIRECTORY_SEPARATOR . 'documents';
     }
 
     /**
